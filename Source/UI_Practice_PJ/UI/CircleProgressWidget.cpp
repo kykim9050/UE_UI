@@ -14,11 +14,11 @@ void UCircleProgressWidget::NativePreConstruct()
 	Super::NativePreConstruct();
 
 	// 데이터 테이블에서 이름 가져올 수 있도록 만들기.
-	CPWSizeBox = WidgetInit<USizeBox>(TEXT("CP_SizeBox"));
+	CPWSizeBox = WidgetComponentInit<USizeBox>(TEXT("CP_SizeBox"));
 	SetBoxSize(300.0f, 300.0f);
 
 	// 데이터 테이블에서 이름 가져올 수 있도록 만들기.
-	CPWImage = WidgetInit<UImage>(TEXT("CP_Image"));
+	CPWImage = WidgetComponentInit<UImage>(TEXT("CP_Image"));
 	SetGraphImageRes();
 }
 
