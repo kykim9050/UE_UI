@@ -14,4 +14,23 @@ class UI_PRACTICE_PJ_API UKKYUserWidgetBase : public UUserWidget
 {
 	GENERATED_BODY()
 	
+public:
+
+protected:
+	template<typename ClassType>
+	ClassType* WidgetInit(const FName& _WidgetName)
+	{
+		ClassType* CurWidget = Cast<ClassType>(GetWidgetFromName(_WidgetName));
+
+		if (nullptr == CurWidget)
+		{
+			UE_LOG(LogType, Fatal, TEXT("if (nullptr == CurWidget)"));
+			return nullptr;
+		}
+
+		return CurWidget;
+	}
+
+private:
+
 };

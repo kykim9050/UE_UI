@@ -12,20 +12,9 @@ void UCircleProgressWidget::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
-	SizeBoxInit();
+	SizeBox = WidgetInit<USizeBox>(TEXT("CP_SizeBox"));
 
 	SetBoxSize(300.0f, 300.0f);
-}
-
-void UCircleProgressWidget::SizeBoxInit()
-{
-	SizeBox = Cast<USizeBox>(GetWidgetFromName(TEXT("CP_SizeBox")));
-
-	if (nullptr == SizeBox)
-	{
-		UE_LOG(LogType, Fatal, TEXT("if (nullptr == SizeBox)"));
-		return;
-	}
 }
 
 void UCircleProgressWidget::SetBoxSize(float _Width, float _Height)
