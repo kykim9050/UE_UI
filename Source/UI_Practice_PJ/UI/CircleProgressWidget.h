@@ -24,7 +24,6 @@ protected:
 	void NativePreConstruct() override;
 
 private:
-	void SizeBoxInit();
 
 private:
 	UPROPERTY()
