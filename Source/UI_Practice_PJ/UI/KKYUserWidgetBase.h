@@ -18,7 +18,7 @@ public:
 
 protected:
 	template<typename ClassType>
-	ClassType* WidgetInit(const FName& _WidgetName)
+	ClassType* WidgetComponentInit(const FName& _WidgetName)
 	{
 		ClassType* CurWidget = Cast<ClassType>(GetWidgetFromName(_WidgetName));
 
