@@ -14,4 +14,10 @@ class UI_PRACTICE_PJ_API UCircleProgressWidget : public UKKYUserWidgetBase
 {
 	GENERATED_BODY()
 	
+public:
+
+protected:
+
+private:
+
 };
