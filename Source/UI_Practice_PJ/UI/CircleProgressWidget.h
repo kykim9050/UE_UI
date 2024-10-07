@@ -15,9 +15,18 @@ class UI_PRACTICE_PJ_API UCircleProgressWidget : public UKKYUserWidgetBase
 	GENERATED_BODY()
 	
 public:
+	UFUNCTION()
+	void SetBoxSize(float _Width, float _Height);
+
+	UCircleProgressWidget();
 
 protected:
+	void NativePreConstruct() override;
 
 private:
+	void SizeBoxInit();
 
+private:
+	UPROPERTY()
+	class USizeBox* SizeBox = nullptr;
 };
