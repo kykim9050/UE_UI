@@ -72,6 +72,11 @@ void UCircleProgressWidget::SetPercent(float _Value)
 {
 	Percent = _Value;
 
-	// 실제로 세팅되는 함수는
-	// void UMaterialInstanceDynamic::SetScalarParameterValue(FName ParameterName, float Value)
+	if (nullptr == MaterialInstDynamic)
+	{
+		return;
+	}
+
+	// 머티리얼 내부의 특정 변수 값에 Value를 동기화
+	MaterialInstDynamic->SetScalarParameterValue(FName("Percentage"), Percent);
 }
