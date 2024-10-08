@@ -6,6 +6,7 @@
 #include "Global/KKYGlobalFunction.h"
 #include "Global/KKYGameInstance.h"
 
+#include "Kismet/KismetMaterialLibrary.h"
 
 UCircleProgressWidget::UCircleProgressWidget()
 {
@@ -51,4 +52,26 @@ void UCircleProgressWidget::CircleProgressWidgetSetting(const FString& _SizeBoxN
 	// 데이터 테이블에서 이름 가져올 수 있도록 만들기.
 	CPWImage = WidgetComponentInit<UImage>(FName(_ImageName));
 	SetGraphImageRes(FName(_ImgResName));
+
+	PercentValSynchronization(FName(_ImgResName));
+}
+
+void UCircleProgressWidget::PercentValSynchronization(const FName _Name)
+{
+	UKKYGameInstance* Inst = UKKYGlobalFunction::GetMainGameInstance(GetWorld());
+	
+	if (nullptr == MaterialInstDynamic)
+	{
+		MaterialInstDynamic = UKismetMaterialLibrary::CreateDynamicMaterialInstance(GetWorld(), Inst->GetMaterialDataInst(_Name));
+	}
+
+	CPWImage->SetBrushFromMaterial(MaterialInstDynamic);
+}
+
+void UCircleProgressWidget::SetPercent(float _Value)
+{
+	Percent = _Value;
+
+	// 실제로 세팅되는 함수는
+	// void UMaterialInstanceDynamic::SetScalarParameterValue(FName ParameterName, float Value)
 }
