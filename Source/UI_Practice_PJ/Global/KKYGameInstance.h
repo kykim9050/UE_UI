@@ -17,6 +17,7 @@ class UI_PRACTICE_PJ_API UKKYGameInstance : public UGameInstance
 public:
 	const struct FMaterialDataRow* GetMaterialDataRow(const FName _Name);
 	UObject* GetMaterialDataObject(const FName _Name) const;
+	class UMaterialInstance* GetMaterialDataInst(const FName _Name);
 
 protected:
 

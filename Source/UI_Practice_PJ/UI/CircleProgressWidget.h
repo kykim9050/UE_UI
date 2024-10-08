@@ -26,6 +26,18 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void CircleProgressWidgetSetting(const FString& _SizeBoxName, float _BoxWidth, float _BoxHeight, const FString& _ImageName, const FString& _ImgResName);
 
+	/// <summary>
+	/// Percent 변수를 수정하면 원형 그래프의 값도 수정될 수 있도록 변수 동기화
+	/// </summary>
+	void PercentValSynchronization(const FName _Name);
+
+	FORCEINLINE float GetPercent() const
+	{
+		return Percent;
+	}
+
+	void SetPercent(float _Value);
+
 protected:
 	void NativePreConstruct() override;
 
@@ -37,4 +49,10 @@ private:
 
 	UPROPERTY()
 	class UImage* CPWImage = nullptr;
+
+	UPROPERTY()
+	float Percent = 0.0f;
+
+	UPROPERTY()
+	class UMaterialInstanceDynamic* MaterialInstDynamic = nullptr;
 };

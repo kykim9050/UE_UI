@@ -25,7 +25,13 @@ const FMaterialDataRow* UKKYGameInstance::GetMaterialDataRow(const FName _Name)
 
 UObject* UKKYGameInstance::GetMaterialDataObject(const FName _Name) const
 {
-	FMaterialDataRow* Data = MaterialDataRow->FindRow<FMaterialDataRow>(_Name, "");
+	FMaterialDataRow* Data = MaterialDataRow->FindRow<FMaterialDataRow>(_Name, nullptr);
+
+	if (nullptr == Data)
+	{
+		UE_LOG(LogType, Error, TEXT("%S(%u)> %s Name Data Is Nullptr"), __FUNCTION__, __LINE__, *_Name.ToString());
+		return nullptr;
+	}
 
 	UObject* Obj = Cast<UObject>(Data->MaterialInst);
 
@@ -35,4 +41,17 @@ UObject* UKKYGameInstance::GetMaterialDataObject(const FName _Name) const
 	}
 
 	return Obj;
+}
+
+UMaterialInstance* UKKYGameInstance::GetMaterialDataInst(const FName _Name)
+{
+	FMaterialDataRow* Data = MaterialDataRow->FindRow<FMaterialDataRow>(_Name, nullptr);
+
+	if (nullptr == Data)
+	{
+		UE_LOG(LogType, Error, TEXT("%S(%u)> %s Name Data Is Nullptr"), __FUNCTION__, __LINE__, *_Name.ToString());
+		return nullptr;
+	}
+
+	return Data->MaterialInst;
 }
