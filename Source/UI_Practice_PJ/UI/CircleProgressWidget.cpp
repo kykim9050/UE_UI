@@ -3,6 +3,9 @@
 
 #include "Components/SizeBox.h"
 #include "Components/Image.h"
+#include "Global/KKYGlobalFunction.h"
+#include "Global/KKYGameInstance.h"
+
 
 UCircleProgressWidget::UCircleProgressWidget()
 {
@@ -35,6 +38,8 @@ void UCircleProgressWidget::SetBoxSize(float _Width, float _Height)
 
 void UCircleProgressWidget::SetGraphImageRes()
 {
-	// 세팅할 오브젝트를 넣어주어야 하는데,,, 이것을 데이터 테이블에서 만들고 GameInstance에서 가져오는 방식으로 만들자.
-	//CPWImage->Brush.SetResourceObject();
+	UKKYGameInstance* Inst = UKKYGlobalFunction::GetMainGameInstance(GetWorld());
+
+	const UObject* Obj = Inst->GetMaterialDataObject(TEXT("RoundProgressBar"));
+	//CPWImage->Brush.SetResourceObject(Obj);
 }

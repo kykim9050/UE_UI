@@ -4,7 +4,7 @@
 #include "Global/KKYGameInstance.h"
 #include "Global/DataTable/MaterialDataRow.h"
 
-FMaterialDataRow* UKKYGameInstance::GetMaterialDataRow(FName _Name)
+const FMaterialDataRow* UKKYGameInstance::GetMaterialDataRow(const FName _Name)
 {
 	if (nullptr == MaterialDataRow)
 	{
@@ -21,4 +21,18 @@ FMaterialDataRow* UKKYGameInstance::GetMaterialDataRow(FName _Name)
 	}
 
 	return Data;
+}
+
+const UObject* UKKYGameInstance::GetMaterialDataObject(const FName _Name)
+{
+	FMaterialDataRow* Data = MaterialDataRow->FindRow<FMaterialDataRow>(_Name, "");
+
+	UObject* Obj = Cast<UObject>(Data->MaterialInst);
+
+	if (nullptr == Obj)
+	{
+		return nullptr;
+	}
+
+	return Obj;
 }
