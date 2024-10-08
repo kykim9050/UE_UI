@@ -15,7 +15,8 @@ class UI_PRACTICE_PJ_API UKKYGameInstance : public UGameInstance
 	GENERATED_BODY()
 	
 public:
-	struct FMaterialDataRow* GetMaterialDataRow(FName _Name);
+	const struct FMaterialDataRow* GetMaterialDataRow(const FName _Name);
+	const UObject* GetMaterialDataObject(const FName _Name);
 
 protected:
 

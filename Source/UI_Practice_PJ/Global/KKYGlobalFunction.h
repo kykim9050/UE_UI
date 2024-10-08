@@ -15,8 +15,10 @@ class UI_PRACTICE_PJ_API UKKYGlobalFunction : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 	
 public:
+	static class UKKYGameInstance* GetMainGameInstance(const UWorld* _WorldContextObject);
 
 protected:
 
 private:
+
 };
