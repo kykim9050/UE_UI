@@ -16,13 +16,7 @@ void UCircleProgressWidget::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
-	// 데이터 테이블에서 이름 가져올 수 있도록 만들기.
-	CPWSizeBox = WidgetComponentInit<USizeBox>(TEXT("CP_SizeBox"));
-	SetBoxSize(300.0f, 300.0f);
-
-	// 데이터 테이블에서 이름 가져올 수 있도록 만들기.
-	CPWImage = WidgetComponentInit<UImage>(TEXT("CP_Image"));
-	SetGraphImageRes();
+	//CircleProgressWidgetSetting(TEXT("CP_SizeBox"), 500.0f, 500.0f, TEXT("CP_Image"), TEXT("RoundProgressBar"));
 }
 
 void UCircleProgressWidget::SetBoxSize(float _Width, float _Height)
@@ -37,13 +31,24 @@ void UCircleProgressWidget::SetBoxSize(float _Width, float _Height)
 	CPWSizeBox->HeightOverride = _Height;
 }
 
-void UCircleProgressWidget::SetGraphImageRes()
+void UCircleProgressWidget::SetGraphImageRes(const FName _Name)
 {
 	UKKYGameInstance* Inst = UKKYGlobalFunction::GetMainGameInstance(GetWorld());
 
 	// Image Widget의 Brush에 리소스를 입력하기 위해서는 UObject* 형으로 인자를 집어넣어야 함.
-	UObject* Obj = Inst->GetMaterialDataObject(TEXT("RoundProgressBar"));
+	UObject* Obj = Inst->GetMaterialDataObject(_Name);
 
 	// 브러시 리소스를 Widget Image에 전달
 	CPWImage->SetBrushResourceObject(Obj);
+}
+
+void UCircleProgressWidget::CircleProgressWidgetSetting(const FString& _SizeBoxName, float _BoxWidth, float _BoxHeight, const FString& _ImageName, const FString& _ImgResName)
+{
+	// 데이터 테이블에서 이름 가져올 수 있도록 만들기.
+	CPWSizeBox = WidgetComponentInit<USizeBox>(FName(_SizeBoxName));
+	SetBoxSize(_BoxWidth, _BoxHeight);
+
+	// 데이터 테이블에서 이름 가져올 수 있도록 만들기.
+	CPWImage = WidgetComponentInit<UImage>(FName(_ImageName));
+	SetGraphImageRes(FName(_ImgResName));
 }

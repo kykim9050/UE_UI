@@ -21,7 +21,10 @@ public:
 	void SetBoxSize(float _Width, float _Height);
 
 	UFUNCTION()
-	void SetGraphImageRes();
+	void SetGraphImageRes(const FName _Name);
+
+	UFUNCTION(BlueprintCallable)
+	void CircleProgressWidgetSetting(const FString& _SizeBoxName, float _BoxWidth, float _BoxHeight, const FString& _ImageName, const FString& _ImgResName);
 
 protected:
 	void NativePreConstruct() override;
