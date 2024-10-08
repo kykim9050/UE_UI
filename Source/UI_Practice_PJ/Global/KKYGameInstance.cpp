@@ -23,7 +23,7 @@ const FMaterialDataRow* UKKYGameInstance::GetMaterialDataRow(const FName _Name)
 	return Data;
 }
 
-const UObject* UKKYGameInstance::GetMaterialDataObject(const FName _Name)
+UObject* UKKYGameInstance::GetMaterialDataObject(const FName _Name) const
 {
 	FMaterialDataRow* Data = MaterialDataRow->FindRow<FMaterialDataRow>(_Name, "");
 

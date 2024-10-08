@@ -32,6 +32,7 @@ void UCircleProgressWidget::SetBoxSize(float _Width, float _Height)
 		return;
 	}
 	
+	// 사이즈 박스의 너비, 높이 값을 지정
 	CPWSizeBox->WidthOverride = _Width;
 	CPWSizeBox->HeightOverride = _Height;
 }
@@ -40,6 +41,9 @@ void UCircleProgressWidget::SetGraphImageRes()
 {
 	UKKYGameInstance* Inst = UKKYGlobalFunction::GetMainGameInstance(GetWorld());
 
-	const UObject* Obj = Inst->GetMaterialDataObject(TEXT("RoundProgressBar"));
-	//CPWImage->Brush.SetResourceObject(Obj);
+	// Image Widget의 Brush에 리소스를 입력하기 위해서는 UObject* 형으로 인자를 집어넣어야 함.
+	UObject* Obj = Inst->GetMaterialDataObject(TEXT("RoundProgressBar"));
+
+	// 브러시 리소스를 Widget Image에 전달
+	CPWImage->SetBrushResourceObject(Obj);
 }
