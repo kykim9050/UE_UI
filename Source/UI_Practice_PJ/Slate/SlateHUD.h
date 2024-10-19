@@ -19,7 +19,7 @@ public:
 protected:
 	void BeginPlay() override;
 
-	TSharedPtr<class STestMainWidget> MainWidget;
+	TSharedPtr<class SBaseWidget> MainWidget;
 	TSharedPtr<class SWidget> WidgetContainer;
 
 private:

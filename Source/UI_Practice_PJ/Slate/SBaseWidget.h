@@ -15,5 +15,7 @@ public:
 protected:
 	virtual bool SupportsKeyboardFocus() const override { return true; };
 
+	TWeakObjectPtr<class ASlateHUD> OwningHUD = nullptr;
+
 private:
 };

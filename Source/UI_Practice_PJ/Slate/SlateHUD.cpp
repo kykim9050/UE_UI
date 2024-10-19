@@ -3,8 +3,8 @@
 
 #include "Slate/SlateHUD.h"
 #include "Slate/STestMainWidget.h"
-//#include "Widgets/SWeakWidget.h"
-//#include "Engine/Engine.h"
+#include "Slate/SSlotAttributeWidget.h"
+
 
 void ASlateHUD::BeginPlay()
 {
@@ -12,7 +12,7 @@ void ASlateHUD::BeginPlay()
 
 	if (GEngine && GEngine->GameViewport)
 	{
-		MainWidget = SNew(STestMainWidget).OwningHUD(this);
+		MainWidget = SNew(SSlotAttributeWidget).OwningHUD(this);
 		GEngine->GameViewport->AddViewportWidgetContent(SAssignNew(WidgetContainer, SWeakWidget).PossiblyNullContent(MainWidget.ToSharedRef()));
 	}
 
