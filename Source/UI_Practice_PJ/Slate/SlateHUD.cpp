@@ -12,8 +12,8 @@ void ASlateHUD::BeginPlay()
 
 	if (GEngine && GEngine->GameViewport)
 	{
-		//Widget = SNew(STestMainWidget).OwningHUD(this);
-	//	GEngine->GameViewport->AddViewportWidgetContent(SAssignNew(WidgetContainer, SWeakWidget).PossiblyNullContent(Widget.ToSharedRef()));
+		MainWidget = SNew(STestMainWidget).OwningHUD(this);
+		GEngine->GameViewport->AddViewportWidgetContent(SAssignNew(WidgetContainer, SWeakWidget).PossiblyNullContent(MainWidget.ToSharedRef()));
 	}
 
 }
