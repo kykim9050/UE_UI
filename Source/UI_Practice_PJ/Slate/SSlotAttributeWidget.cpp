@@ -27,7 +27,7 @@ void SSlotAttributeWidget::Construct(const FArguments& _Args)
 			[
 				SNew(STextBlock)
 				.Font(TitleTextStyle)
-				.Text(TitleText)
+				.Text(LOCTEXT("ScrolFirstHorFirst", "ScrolFirstHorFirst"))
 				.Justification(ETextJustify::Center)
 			]
 			+SHorizontalBox::Slot()
@@ -35,15 +35,16 @@ void SSlotAttributeWidget::Construct(const FArguments& _Args)
 			[
 				SNew(STextBlock)
 				.Font(TitleTextStyle)
-				.Text(TitleText)
+				.Text(LOCTEXT("ScrolFirstHorSecond", "ScrolFirstHorSecond"))
 				.Justification(ETextJustify::Center)
+				
 			]
 			+SHorizontalBox::Slot()
 			.HAlign(HAlign_Right)
 			[
 				SNew(STextBlock)
 				.Font(TitleTextStyle)
-				.Text(TitleText)
+				.Text(LOCTEXT("ScrolFirstHorThird", "ScrolFirstHorThird"))
 				.Justification(ETextJustify::Center)
 			]
 		]
@@ -56,7 +57,7 @@ void SSlotAttributeWidget::Construct(const FArguments& _Args)
 			[
 				SNew(STextBlock)
 				.Font(TitleTextStyle)
-				.Text(TitleText)
+				.Text(LOCTEXT("ScrolSecondHorFirst", "ScrolSecondHorFirst"))
 				.Justification(ETextJustify::Center)
 			]
 			+SHorizontalBox::Slot()
@@ -64,7 +65,7 @@ void SSlotAttributeWidget::Construct(const FArguments& _Args)
 			[
 				SNew(STextBlock)
 				.Font(TitleTextStyle)
-				.Text(TitleText)
+				.Text(LOCTEXT("ScrolSecondHorSecond", "ScrolSecondHorSecond"))
 				.Justification(ETextJustify::Center)
 			]
 			+SHorizontalBox::Slot()
@@ -72,8 +73,8 @@ void SSlotAttributeWidget::Construct(const FArguments& _Args)
 			[
 				SNew(STextBlock)
 				.Font(TitleTextStyle)
-				.Text(TitleText)
-				.Justification(ETextJustify::Right)
+				.Text(LOCTEXT("ScrolSecondHorThird", "ScrolSecondHorThird"))
+				.Justification(ETextJustify::Center)
 			]
 		]
 	];
