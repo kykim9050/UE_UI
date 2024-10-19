@@ -6,4 +6,6 @@
 void STestMainWidget::Construct(const FArguments& _Args)
 {
 	bCanSupportFocus = true;
+
+	OwningHUD = _Args._OwningHUD;
 }

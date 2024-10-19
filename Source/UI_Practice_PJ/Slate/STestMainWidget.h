@@ -12,9 +12,13 @@ class STestMainWidget : public SBaseWidget
 public:
 	SLATE_BEGIN_ARGS(STestMainWidget) {}
 
+	SLATE_ARGUMENT(TWeakObjectPtr<class ASlateHUD>, OwningHUD)
+
 	SLATE_END_ARGS()
 
 	virtual void Construct(const FArguments& _Args);
+
+	TWeakObjectPtr<class ASlateHUD> OwningHUD;
 
 protected:
 

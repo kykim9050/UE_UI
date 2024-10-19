@@ -13,5 +13,15 @@ UCLASS()
 class UI_PRACTICE_PJ_API ASlateHUD : public AHUD
 {
 	GENERATED_BODY()
+
+public:
 	
+protected:
+	void BeginPlay() override;
+
+	TSharedPtr<class STestMainWidget> Widget;
+	TSharedPtr<class SWidget> WidgetContainer;
+
+private:
+
 };
