@@ -4,6 +4,7 @@
 #include "Slate/SlateHUD.h"
 #include "Slate/STestMainWidget.h"
 #include "Slate/SSlotAttributeWidget.h"
+#include "Slate/SUniformGridPanelsWidget.h"
 
 
 void ASlateHUD::BeginPlay()
@@ -12,7 +13,7 @@ void ASlateHUD::BeginPlay()
 
 	if (GEngine && GEngine->GameViewport)
 	{
-		MainWidget = SNew(SSlotAttributeWidget).OwningHUD(this);
+		MainWidget = SNew(SUniformGridPanelsWidget).OwningHUD(this);
 		GEngine->GameViewport->AddViewportWidgetContent(SAssignNew(WidgetContainer, SWeakWidget).PossiblyNullContent(MainWidget.ToSharedRef()));
 	}
 
