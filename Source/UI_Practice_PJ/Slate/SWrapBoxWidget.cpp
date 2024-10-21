@@ -31,12 +31,6 @@ void SWrapBoxWidget::Construct(const FArguments& _Args)
 			+ SWrapBox::Slot()
 			.Padding(5)
 			.VAlign(VAlign_Bottom)
-			[
-				SNew(STextBlock)
-					.Font(TitleTextStyle)
-					.Text(LOCTEXT("WBSecond", "I'm WrapBoxSecond"))
-					.Justification(ETextJustify::Center)
-			]
 			+ SWrapBox::Slot()
 			.Padding(FMargin(20, 5, 0, 5))
 			.VAlign(VAlign_Center)
