@@ -8,13 +8,15 @@
  */
 class SWrapBoxWidget : public SBaseWidget
 {
-public:
 	SLATE_BEGIN_ARGS(SWrapBoxWidget) {}
 
 	SLATE_ARGUMENT(TWeakObjectPtr<class ASlateHUD>, OwningHUD)
 
 	SLATE_END_ARGS()
 
+public:
 	virtual void Construct(const FArguments& _Args);
+	void OnCheckBoxChanged(ECheckBoxState _CheckBoxState);
 
+	ECheckBoxState CurBoxState = ECheckBoxState::Unchecked;
 };
