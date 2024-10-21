@@ -23,10 +23,10 @@ void SWrapBoxWidget::Construct(const FArguments& _Args)
 			.Padding(5)
 			.VAlign(VAlign_Top)
 			[
-				SNew(STextBlock)
-					.Font(TitleTextStyle)
-					.Text(LOCTEXT("WBFirst", "I'm WrapBoxFirst I'm WrapBoxFirst I'm WrapBoxFirst I'm WrapBoxFirst I'm WrapBoxFirst I'm WrapBoxFirst"))
-					.Justification(ETextJustify::Center)
+				SNew(SCheckBox)
+				.Cursor(EMouseCursor::Hand)
+				.OnCheckStateChanged(this, &SWrapBoxWidget::OnCheckBoxChanged)
+				
 			]
 			+ SWrapBox::Slot()
 			.Padding(5)
@@ -56,4 +56,16 @@ void SWrapBoxWidget::Construct(const FArguments& _Args)
 					.Justification(ETextJustify::Center)
 			]
 	];
+}
+
+void SWrapBoxWidget::OnCheckBoxChanged(ECheckBoxState _CheckBoxState)
+{
+	if (ECheckBoxState::Checked == _CheckBoxState)
+	{
+		CurBoxState = ECheckBoxState::Checked;
+	}
+	else
+	{
+		CurBoxState = ECheckBoxState::Unchecked;
+	}
 }
