@@ -51,7 +51,7 @@ void SItemSlotWidget::Construct(const FArguments& InArgs)
 					[
 						SNew(STextBlock)
 						.Text(this, &SItemSlotWidget::GetItemCount)
-						.ColorAndOpacity(FSlateColor(FLinearColor::Black))
+						.ColorAndOpacity(FSlateColor(FLinearColor::Red))
 						.Font(FSlateFontInfo(FPaths::EngineContentDir()/TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
 					]
 				]
