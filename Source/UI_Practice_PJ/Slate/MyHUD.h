@@ -6,6 +6,8 @@
 #include "GameFramework/HUD.h"
 #include "MyHUD.generated.h"
 
+class UUWMain;
+
 /**
  * 
  */
@@ -14,8 +16,11 @@ class UI_PRACTICE_PJ_API AMyHUD : public AHUD
 {
 	GENERATED_BODY()
 	
+public:
+	UPROPERTY(EditAnywhere, Category = "Widgets")
+	TSubclassOf<UUserWidget> MainWidgetClass;
+
 protected:
-	TSharedPtr<class SMyWidget> TimeWidget = nullptr;
-	
 	virtual void BeginPlay() override;
+	UUWMain* MainWidget;
 };
