@@ -2,15 +2,17 @@
 
 
 #include "Slate/MyHUD.h"
-#include "Slate/MyWidget.h"
+
+#include "Slate/UWMain.h"
 
 void AMyHUD::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (GEngine && GEngine->GameViewport)
+	MainWidget = CreateWidget<UUWMain>(GetWorld(), MainWidgetClass);
+
+	if (MainWidget)
 	{
-		TimeWidget = SNew(SMyWidget);
-		GEngine->GameViewport->AddViewportWidgetContent(TimeWidget.ToSharedRef());
+		MainWidget->AddToViewport();
 	}
 }
