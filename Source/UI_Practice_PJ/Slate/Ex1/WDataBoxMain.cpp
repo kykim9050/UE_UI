@@ -23,12 +23,13 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 	.VAlign(VAlign_Fill)
 	[
 		SNew(SOverlay)
-		+ SOverlay::Slot()
+		+SOverlay::Slot()
 		.HAlign(HAlign_Fill)
 		.VAlign(VAlign_Fill)
 		[
-			SNew(SImage)
-			.Image(FCoreStyle::Get().GetBrush("BlackBrush"))
+			SNew(SBorder)
+			.BorderImage(FCoreStyle::Get().GetBrush("ToolPanel.GroupBorder"))
+			.BorderBackgroundColor(FLinearColor::White)
 		]
 		+ SOverlay::Slot()
 		.HAlign(HAlign_Center)
@@ -52,7 +53,7 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 			[
 				SNew(SSeparator)
 				.Orientation(Orient_Horizontal)
-				.ColorAndOpacity(FSlateColor(FColor(0xC0, 0xC0, 0xC0, 0xFF)))
+				.ColorAndOpacity(FSlateColor(FColor(0x80, 0x80, 0x80, 0xFF)))
 				.Thickness(3.0f)
 			]
 			+ SScrollBox::Slot()
