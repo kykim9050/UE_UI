@@ -6,6 +6,18 @@
 
 void SDataBoxMain::Construct(const FArguments& InArgs)
 {
+	NWidget = InArgs._NWidget.Widget;
+
+	TSharedRef<SHorizontalBox> ContentBox = SNew(SHorizontalBox);
+
+	if (NWidget.IsValid() && NWidget != SNullWidget::NullWidget)
+	{
+		ContentBox->AddSlot()
+		[
+			NWidget.ToSharedRef()
+		];
+	}
+
 	ChildSlot
 	.HAlign(HAlign_Fill)
 	.VAlign(VAlign_Fill)
@@ -51,16 +63,10 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 				SNew(SBox)
 				.MinDesiredWidth(400.f)
 				.MinDesiredHeight(400.f)
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
 				[
-					SNew(SOverlay)
-					+SOverlay::Slot()
-					.HAlign(HAlign_Fill)
-					.VAlign(VAlign_Fill)
-					.Padding(0.f, 5.f)
-					[
-						SNew(SImage)
-						.Image(FCoreStyle::Get().GetBrush("WhiteBrush"))
-					]
+					ContentBox
 				]
 			]
 		]
