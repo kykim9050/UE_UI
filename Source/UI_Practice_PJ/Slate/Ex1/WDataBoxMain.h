@@ -13,10 +13,13 @@ public:
 	SLATE_END_ARGS()
 
 	void Construct(const FArguments& InArgs);
+	FText GetDataTitle() const;
+
 protected:
 
-private:
 
+private:
+	FString DataTitle = "Test Title Test Title";
 };
 /**
  * 
