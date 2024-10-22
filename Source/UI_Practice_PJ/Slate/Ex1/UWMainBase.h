@@ -7,7 +7,7 @@
 #include "UWMainBase.generated.h"
 
 class UCanvasPanel;
-
+class UWDataBoxMain;
 /**
  * 
  */
@@ -18,4 +18,7 @@ class UI_PRACTICE_PJ_API UUWMainBase : public UUserWidget
 public:
 	UPROPERTY(BlueprintReadOnly, Category = "UWMainEx1", meta = (BindWidget))
 	UCanvasPanel* RootWidget = nullptr;
+
+	UPROPERTY(BlueprintReadOnly, Category = "UWMainEx1", meta = (BindWidget))
+	UWDataBoxMain* DataBoxMain = nullptr;
 };
