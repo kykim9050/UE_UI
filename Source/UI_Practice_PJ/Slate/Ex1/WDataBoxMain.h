@@ -10,6 +10,7 @@ class SDataBoxMain : public SCompoundWidget
 {
 public:
 	SLATE_BEGIN_ARGS(SDataBoxMain) {}
+	SLATE_NAMED_SLOT(FArguments, NWidget)
 	SLATE_END_ARGS()
 
 	void Construct(const FArguments& InArgs);
@@ -20,6 +21,7 @@ protected:
 
 private:
 	FString DataTitle = "Test Title";
+	TSharedPtr<SWidget> NWidget = nullptr;
 };
 /**
  * 
