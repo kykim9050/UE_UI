@@ -7,6 +7,7 @@
 #include "MyHUD.generated.h"
 
 class UUWMain;
+class UUWMainBase;
 
 /**
  * 
@@ -22,5 +23,6 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-	UUWMain* MainWidget;
+	//UUWMain* MainWidget;
+	UUWMainBase* MainWidget = nullptr;
 };
