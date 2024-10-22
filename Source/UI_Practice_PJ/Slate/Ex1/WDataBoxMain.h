@@ -19,7 +19,7 @@ protected:
 
 
 private:
-	FString DataTitle = "Test Title Test Title";
+	FString DataTitle = "Test Title";
 };
 /**
  * 
