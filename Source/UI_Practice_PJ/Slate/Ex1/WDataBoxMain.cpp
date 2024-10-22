@@ -31,7 +31,7 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 			[
 				SNew(STextBlock)
 				.Text(this, &SDataBoxMain::GetDataTitle)
-				.ColorAndOpacity(FSlateColor(FLinearColor::White))
+				.ColorAndOpacity(FSlateColor(FColor(0x80,0x80,0x80,0xFF)))
 				.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
 			]
 			+ SScrollBox::Slot()
@@ -40,7 +40,7 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 			[
 				SNew(SSeparator)
 				.Orientation(Orient_Horizontal)
-				.ColorAndOpacity(FSlateColor(FLinearColor::White))
+				.ColorAndOpacity(FSlateColor(FColor(0xC0, 0xC0, 0xC0, 0xFF)))
 				.Thickness(3.0f)
 			]
 			+ SScrollBox::Slot()
