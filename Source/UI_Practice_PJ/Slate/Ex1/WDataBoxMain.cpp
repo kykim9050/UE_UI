@@ -2,13 +2,18 @@
 
 
 #include "Slate/Ex1/WDataBoxMain.h"
+#include "Editor/EditorStyle/Public/EditorStyleSet.h"
+#include "Editor/EditorStyle/Public/EditorStyle.h"
 
+BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 
 void SDataBoxMain::Construct(const FArguments& InArgs)
 {
 	NWidget = InArgs._NWidget.Widget;
 
 	TSharedRef<SHorizontalBox> ContentBox = SNew(SHorizontalBox);
+	TSharedRef<SSeparator> Sep = SNew(SSeparator);
+	Sep->SetColorAndOpacity(FLinearColor(1.f, 1.f, 1.f, 1.f));
 
 	if (NWidget.IsValid() && NWidget != SNullWidget::NullWidget)
 	{
@@ -28,8 +33,9 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 		.VAlign(VAlign_Fill)
 		[
 			SNew(SBorder)
-			.BorderImage(FCoreStyle::Get().GetBrush("ToolPanel.GroupBorder"))
-			.BorderBackgroundColor(FLinearColor::White)
+			//.BorderImage(FCoreStyle::Get().GetBrush("ToolPanel.GroupBorder"))
+			.BorderImage(FAppStyle::GetBrush("Debug.Border"))
+			//.BorderBackgroundColor(FLinearColor::White)
 		]
 		+ SOverlay::Slot()
 		.HAlign(HAlign_Center)
@@ -44,17 +50,18 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 			[
 				SNew(STextBlock)
 				.Text(this, &SDataBoxMain::GetDataTitle)
-				.ColorAndOpacity(FSlateColor(FColor(0x80,0x80,0x80,0xFF)))
 				.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
+				.ColorAndOpacity(FSlateColor(FColor(0x80,0x80,0x80,0xFF)))
+				//.Font(FAppStyle::GetFontStyle("GenericFilters.TextStyle"))
 			]
 			+ SScrollBox::Slot()
 			.VAlign(VAlign_Center)
 			.Padding(5.f)
 			[
-				SNew(SSeparator)
+				SAssignNew(Sep, SSeparator)
 				.Orientation(Orient_Horizontal)
-				.ColorAndOpacity(FSlateColor(FColor(0x80, 0x80, 0x80, 0xFF)))
-				.Thickness(3.0f)
+				//.ColorAndOpacity(FColor(0xFF, 0xFF, 0xFF, 0xFF))
+				.Thickness(4.0f)
 			]
 			+ SScrollBox::Slot()
 			.HAlign(HAlign_Center)
@@ -73,6 +80,8 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 		]
 	];
 }
+
+END_SLATE_FUNCTION_BUILD_OPTIMIZATION
 
 FText SDataBoxMain::GetDataTitle() const
 {
