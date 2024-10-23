@@ -8,6 +8,7 @@
 
 class UCanvasPanel;
 class UWDataBoxMain;
+class UWContentBox;
 /**
  * 
  */
@@ -21,4 +22,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "UWMainEx1", meta = (BindWidget))
 	UWDataBoxMain* DataBoxMain = nullptr;
+
+	UPROPERTY(BlueprintReadOnly, Category = "UWMainEx1", meta = (BindWidget))
+	UWContentBox* ContentBox = nullptr;
 };
