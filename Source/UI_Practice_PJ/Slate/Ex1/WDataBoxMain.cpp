@@ -9,19 +9,13 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 
 void SDataBoxMain::Construct(const FArguments& InArgs)
 {
-	NWidget = InArgs._NWidget.Widget;
+	Cnt = InArgs._Cnt;
 
-	TSharedRef<SHorizontalBox> ContentBox = SNew(SHorizontalBox);
 	TSharedRef<SSeparator> Sep = SNew(SSeparator);
 	Sep->SetColorAndOpacity(FLinearColor(1.f, 1.f, 1.f, 1.f));
 
-	if (NWidget.IsValid() && NWidget != SNullWidget::NullWidget)
-	{
-		ContentBox->AddSlot()
-		[
-			NWidget.ToSharedRef()
-		];
-	}
+
+	SetCnt();
 
 	ChildSlot
 	.HAlign(HAlign_Fill)
@@ -74,7 +68,9 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 				.HAlign(HAlign_Fill)
 				.VAlign(VAlign_Fill)
 				[
-					ContentBox
+					SNew(STextBlock)
+					.Text(this, &SDataBoxMain::GetDataCnt)
+					.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
 				]
 			]
 		]
@@ -86,6 +82,24 @@ END_SLATE_FUNCTION_BUILD_OPTIMIZATION
 FText SDataBoxMain::GetDataTitle() const
 {
 	return FText::FromString(DataTitle);
+}
+
+FText SDataBoxMain::GetDataCnt() const
+{
+	return FText::FromString(FString::FromInt(GetCnt().Get()));
+}
+
+TAttribute<int32> SDataBoxMain::GetCnt() const
+{
+	return Cnt;
+}
+
+void SDataBoxMain::SetCnt()
+{
+	FDateTime CurrentTime = FDateTime::Now();
+	int32 SecondVal = CurrentTime.GetSecond();
+	
+	Cnt = SecondVal;
 }
 
 void UWDataBoxMain::ReleaseSlateResources(bool bReleaseChildren)

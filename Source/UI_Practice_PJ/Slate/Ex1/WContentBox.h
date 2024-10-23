@@ -10,17 +10,15 @@ class SContentBox : public SCompoundWidget
 {
 public:
 	SLATE_BEGIN_ARGS(SContentBox) {}
-	//SLATE_NAMED_SLOT(FArguments, NWidget)
+	SLATE_NAMED_SLOT(FArguments, NWidget)
 	SLATE_END_ARGS()
 
 	void Construct(const FArguments& InArgs);
-	//FText GetDataTitle() const;
 
 protected:
 
-
 private:
-	//TSharedPtr<SWidget> NWidget = nullptr;
+	TSharedPtr<SWidget> NWidget = nullptr;
 };
 
 UCLASS(Blueprintable, BlueprintType)
