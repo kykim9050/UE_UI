@@ -9,21 +9,19 @@
 class SDataBoxMain : public SCompoundWidget
 {
 public:
-	SLATE_BEGIN_ARGS(SDataBoxMain) {}
+	SLATE_BEGIN_ARGS(SDataBoxMain)
+		: _Cnt(50)
+	{}
 	SLATE_ATTRIBUTE(int32, Cnt)
 	SLATE_END_ARGS()
 
 	void Construct(const FArguments& InArgs);
 	FText GetDataTitle() const;
-	FText GetDataCnt() const;
-	TAttribute<int32> GetCnt() const;
-	void SetCnt();
 
 protected:
 
 private:
 	FString DataTitle = "Test Title";
-	TAttribute<int32> Cnt = 43;
 };
 /**
  * 
