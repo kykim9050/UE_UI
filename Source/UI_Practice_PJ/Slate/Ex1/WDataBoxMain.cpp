@@ -9,13 +9,10 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 
 void SDataBoxMain::Construct(const FArguments& InArgs)
 {
-	TAttribute<int32> SecondData = InArgs._Cnt;
-	int32 SecondDataVal = SecondData.Get();
+	ValueAttribute = InArgs._Value;
 
 	TSharedRef<SSeparator> Sep = SNew(SSeparator);
 	Sep->SetColorAndOpacity(FLinearColor(1.f, 1.f, 1.f, 1.f));
-
-	//SetCnt();
 
 	ChildSlot
 	.HAlign(HAlign_Fill)
@@ -69,7 +66,7 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 				.VAlign(VAlign_Fill)
 				[
 					SNew(STextBlock)
-					.Text(FText::FromString(FString::FromInt(SecondDataVal)))
+					.Text(this, &SDataBoxMain::GetValueAsText)
 					.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
 				]
 			]
@@ -99,3 +96,16 @@ TSharedRef<SWidget> UWDataBoxMain::RebuildWidget()
 	DataBoxMainWidget = SNew(SDataBoxMain);
 	return DataBoxMainWidget.ToSharedRef();
 }
+
+FText SDataBoxMain::GetValueAsText() const
+{
+	return FText::FromString(GetValueAsString());
+}
+
+FString SDataBoxMain::GetValueAsString() const
+{
+	int32 CurrentValue = ValueAttribute.Get();
+
+	return FString::FromInt(CurrentValue);
+}
+
