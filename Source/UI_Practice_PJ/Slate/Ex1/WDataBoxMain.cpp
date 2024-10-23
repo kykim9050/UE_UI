@@ -123,7 +123,9 @@ FString SDataBoxMain::GetValueAsString() const
 
 FReply SDataBoxMain::OnClicked()
 {
-	int a = 0;
+	int32 Value = ValueAttribute.Get();
+	Value++;
+	ValueAttribute.Set(Value);
 
 	return FReply::Handled();
 }
