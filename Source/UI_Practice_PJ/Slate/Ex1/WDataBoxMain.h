@@ -19,6 +19,7 @@ public:
 	FText GetDataTitle() const;
 	FText GetValueAsText() const;
 	FString GetValueAsString() const;
+	FReply OnClicked();
 
 protected:
 
