@@ -39,11 +39,23 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 			.VAlign(VAlign_Center)
 			.Padding(5.f)
 			[
-				SNew(STextBlock)
-				.Text(this, &SDataBoxMain::GetDataTitle)
-				.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
-				.ColorAndOpacity(FSlateColor(FColor(0x80,0x80,0x80,0xFF)))
-				//.Font(FAppStyle::GetFontStyle("GenericFilters.TextStyle"))
+				//SNew(STextBlock)
+				//.Text(this, &SDataBoxMain::GetDataTitle)
+				//.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
+				//.ColorAndOpacity(FSlateColor(FColor(0x80,0x80,0x80,0xFF)))
+				////.Font(FAppStyle::GetFontStyle("GenericFilters.TextStyle"))
+				SNew(SBox)
+				.MinDesiredWidth(400.f)
+				.MinDesiredHeight(400.f)
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
+				[
+					SNew(SButton)
+					.HAlign(HAlign_Fill)
+					.VAlign(VAlign_Fill)
+					.OnClicked(this, &SDataBoxMain::OnClicked)
+				]
+				
 			]
 			+ SScrollBox::Slot()
 			.VAlign(VAlign_Center)
@@ -109,3 +121,9 @@ FString SDataBoxMain::GetValueAsString() const
 	return FString::FromInt(CurrentValue);
 }
 
+FReply SDataBoxMain::OnClicked()
+{
+	int a = 0;
+
+	return FReply::Handled();
+}
