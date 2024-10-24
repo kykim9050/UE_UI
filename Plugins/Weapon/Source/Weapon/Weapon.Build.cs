@@ -27,7 +27,6 @@ public class Weapon : ModuleRules
 			{
 				"Core",
 				// ... add other public dependencies that you statically link with here ...
-				"UI_Practice_PJ"
 			}
 			);
 			
@@ -41,7 +40,8 @@ public class Weapon : ModuleRules
 				"SlateCore",
 				// ... add private dependencies that you statically link with here ...	
 
-				"UnrealEd"
+				"UI_Practice_PJ",
+                "UnrealEd",
 			}
 			);
 		

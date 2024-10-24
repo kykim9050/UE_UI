@@ -14,4 +14,6 @@ public:
 	virtual void ShutdownModule() override;
 
 private:
+	// 언리얼 내부 우클릭 대분류 목록
+	//TSharedPtr<class FWeaponContextMenu> ContextMenu;
 };
