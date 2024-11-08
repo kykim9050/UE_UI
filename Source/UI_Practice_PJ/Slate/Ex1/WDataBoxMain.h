@@ -30,7 +30,6 @@ protected:
 private:
 	FString DataTitle = "Test Title";
 	TAttribute<int32> ValueAttribute;
-	TAttribute<FText> TimeText;
 };
 /**
  * 

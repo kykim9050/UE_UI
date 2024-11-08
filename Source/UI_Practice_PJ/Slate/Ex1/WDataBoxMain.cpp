@@ -10,7 +10,8 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SDataBoxMain::Construct(const FArguments& InArgs)
 {
 	ValueAttribute = InArgs._Value;
-	TimeText = InArgs._TimeText;
+	TAttribute<FText> TimeText = InArgs._TimeText;
+	FText TimeTextValue = InArgs._TimeText.Get();
 	int32 ArgValue = InArgs._ArgValue;
 
 	TSharedRef<SSeparator> Sep = SNew(SSeparator);
@@ -90,6 +91,12 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 					[
 						SNew(STextBlock)
 						.Text(TimeText)
+						.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
+					]
+					+SVerticalBox::Slot()
+					[
+						SNew(STextBlock)
+						.Text(TimeTextValue)
 						.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
 					]
 				]
