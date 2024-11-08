@@ -11,8 +11,12 @@ class SDataBoxMain : public SCompoundWidget
 public:
 	SLATE_BEGIN_ARGS(SDataBoxMain)
 		: _Value(50)
+		, _TimeText()
+		, _ArgValue(0)
 	{}
 	SLATE_ATTRIBUTE(int32, Value)
+	SLATE_ATTRIBUTE(FText, TimeText)
+	SLATE_ARGUMENT(int32, ArgValue)
 	SLATE_END_ARGS()
 
 	void Construct(const FArguments& InArgs);
@@ -26,6 +30,7 @@ protected:
 private:
 	FString DataTitle = "Test Title";
 	TAttribute<int32> ValueAttribute;
+	TAttribute<FText> TimeText;
 };
 /**
  * 
@@ -43,4 +48,6 @@ protected:
 
 private:
 	TSharedPtr<SDataBoxMain> DataBoxMainWidget = nullptr;
+	TAttribute<FText> DynamicTimeText;
+
 };

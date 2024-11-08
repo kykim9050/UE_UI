@@ -10,6 +10,8 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SDataBoxMain::Construct(const FArguments& InArgs)
 {
 	ValueAttribute = InArgs._Value;
+	TimeText = InArgs._TimeText;
+	int32 ArgValue = InArgs._ArgValue;
 
 	TSharedRef<SSeparator> Sep = SNew(SSeparator);
 	Sep->SetColorAndOpacity(FLinearColor(1.f, 1.f, 1.f, 1.f));
@@ -77,9 +79,19 @@ void SDataBoxMain::Construct(const FArguments& InArgs)
 				.HAlign(HAlign_Fill)
 				.VAlign(VAlign_Fill)
 				[
-					SNew(STextBlock)
-					.Text(this, &SDataBoxMain::GetValueAsText)
-					.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
+					SNew(SVerticalBox)
+					+SVerticalBox::Slot()
+					[
+						SNew(STextBlock)
+						.Text(this, &SDataBoxMain::GetValueAsText)
+						.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
+					]
+					+SVerticalBox::Slot()
+					[
+						SNew(STextBlock)
+						.Text(TimeText)
+						.Font(FSlateFontInfo(FPaths::EngineContentDir() / TEXT("Slate/Fonts/Roboto-Regular.ttf"), 24))
+					]
 				]
 			]
 		]
@@ -105,7 +117,13 @@ const FText UWDataBoxMain::GetPaletteCategory()
 
 TSharedRef<SWidget> UWDataBoxMain::RebuildWidget()
 {
-	DataBoxMainWidget = SNew(SDataBoxMain);
+	DynamicTimeText = MakeAttributeLambda([]() -> FText {
+		return FText::FromString(FDateTime::Now().ToString(TEXT("%Y-%m-%d %H:%M:%S")));
+		});
+
+	SAssignNew(DataBoxMainWidget, SDataBoxMain)
+	.TimeText(DynamicTimeText);
+
 	return DataBoxMainWidget.ToSharedRef();
 }
 
